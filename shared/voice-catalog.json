@@ -1,0 +1,15 @@
+{
+  "model": "bulbul:v4-flash",
+  "default_profile": "sentinel",
+  "profiles": [
+    {"id":"sentinel","name":"The Sentinel","description":"A conversational starting point for Toren.","speakers":{"en-IN":"dev_en_conversational","hi-IN":"ratan_hi_customer_expressive"}},
+    {"id":"storyteller","name":"The Storyteller","description":"Audition suspense and documentary personas.","speakers":{"en-IN":"rustom_en_suspense","hi-IN":"ratan_hi_documentary"}},
+    {"id":"warden","name":"The Warden","description":"Audition suspense and character personas.","speakers":{"en-IN":"varun_en_suspense","hi-IN":"ashok_hi_character"}}
+  ],
+  "samples": {
+    "greeting":{"label":"At the gate","en-IN":"Halt, traveler. State your business at the gate. These walls shelter people who depend on my judgment.","hi-IN":"रुको, यात्री। इस फाटक पर आने का कारण बताओ। इन दीवारों के भीतर के लोगों की रक्षा करना मेरा कर्तव्य है।"},
+    "suspicious":{"label":"The missing key","en-IN":"Open your hand, traveler. That key belongs on my belt. Return it, and we can settle this quietly.","hi-IN":"अपना हाथ खोलो, यात्री। वह चाबी मेरी है। उसे लौटा दो, तो हम यह बात शांति से सुलझा सकते हैं।"},
+    "grateful":{"label":"Trust earned","en-IN":"You recovered my supplies when others walked past. You have earned my trust. Go on, traveler; the gate is open.","hi-IN":"तुमने मेरी बिखरी रसद समेटी, जबकि दूसरे लोग आगे बढ़ गए। तुमने मेरा भरोसा जीत लिया है। आगे बढ़ो, यात्री; फाटक खुला है।"}
+  },
+  "note":"Each profile pairs separate English and Hindi personas. Audition both languages; shared actor identity and voice quality have not been verified."
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101310"><meta name="description" content="Meet Toren at the last fortress gate. Talk, earn his trust, and find your way through.">
+<title>VoiceStage — The Last Gate</title>
+<link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/game/style.css">
+<script type="module" src="/game/main.js"></script>
+</head>
+<body>
+<svg class="icon-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="i-mark" viewBox="0 0 24 24"><path d="M3 10v4m4-8v12m5-16v20m5-16v12m4-8v4"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="m5 12 14 0m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4"/><path d="m11 11 9 9m-2-2 2-2m-5-1 2-2"/></symbol>
+<symbol id="i-return" viewBox="0 0 24 24"><path d="m8 4-5 5 5 5M3 9h11a6 6 0 0 1 0 12h-3"/></symbol>
+<symbol id="i-help" viewBox="0 0 24 24"><path d="m3 9 4-4 4 1 3-1 7 5-5 8-4 1-8-5Zm4-4 5 5 3-2m-7 7 3 3m0-5 4 4M1 10l4 6m14-8 4 4"/></symbol>
+<symbol id="i-gate" viewBox="0 0 24 24"><path d="M4 21V9a8 8 0 0 1 16 0v12M8 21V9m4 12V5m4 16V9M2 21h20M4 12h16"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+<symbol id="i-volume" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5Zm4 4a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+<symbol id="i-muted" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5Zm5 5 6 6m0-6-6 6"/></symbol>
+<symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-11v1"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5s-6-3-10-1v15c4-2 10 1 10 1s6-3 10-1V4c-4-2-10 1-10 1Zm0 0v15"/></symbol>
+</defs></svg>
+<header class="topbar">
+<a class="brand" href="/" aria-label="VoiceStage home"><span class="brand-mark"><svg><use href="#i-mark"/></svg></span>VoiceStage<span class="brand-beta">LABS</span></a>
+<nav aria-label="Main navigation"><span class="nav-current">The experience</span><button class="nav-link studio-nav" id="studio-nav">Voice Studio <svg><use href="#i-mark"/></svg></button><button class="nav-link" id="help-top">How to play <svg><use href="#i-info"/></svg></button></nav>
+<div class="header-right"><span class="demo-label">INTERACTIVE DEMO <span>01</span></span><span class="header-divider"></span><button class="icon-button" id="sound" title="Mute voice" aria-label="Mute voice" aria-pressed="false"><svg><use href="#i-volume"/></svg></button></div>
+</header>
+<main>
+<div class="intro"><div><div class="eyebrow"><span></span> BULBUL V4 / CHARACTER VOICE LAB</div><h1>The Last Gate<span>.</span></h1><p>Choose a voice. Change his world. Hear him respond.</p></div><button id="restart" class="restart"><svg><use href="#i-reset"/></svg> Restart encounter</button></div>
+<div class="voice-ribbon"><div><span class="bulbul-mark"><svg><use href="#i-mark"/></svg></span><span><strong>Bulbul v4 Flash</strong><small id="ribbon-source">Character voices, shaped by the story.</small></span></div><button id="open-studio"><span id="active-profile">The Sentinel</span><span class="ribbon-divider">/</span> Voice Studio <svg><use href="#i-arrow"/></svg></button></div>
+<div class="experience">
+<section class="world-column" aria-label="Game scene and actions">
+<div class="scene" id="scene" aria-label="Toren stands before a torchlit stone fortress gate at dusk.">
+<div class="scene-art" role="img" aria-label="A guard and a torchlit fortress at dusk."></div><div class="scene-shade"></div><div class="scene-grain"></div>
+<div class="scene-top"><span class="location"><span class="tiny-diamond">◇</span> ASHENFORT <span>/</span> THE NORTHERN PASS</span><span class="scene-time"><span></span> DUSK</span></div>
+<div class="embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="gate-notice" id="gate-notice" hidden><svg><use href="#i-gate"/></svg><div><strong>Passage granted</strong><span>You have earned your way through.</span></div></div>
+<div id="scene-caption" class="scene-caption" aria-hidden="true" hidden></div><div class="scene-bottom"><div class="character-caption"><span class="caption-line"></span><div class="eyebrow">KEEPER OF THE NORTHERN PASS</div><h2>Toren</h2><p>A weary guard. An unbroken oath.</p></div><div class="actor-live"><button id="hear-greeting" class="portrait-button" aria-label="Hear Toren’s greeting"><span class="portrait-face"><img src="/game/toren.webp" alt="Toren"><span class="portrait-mouth"></span></span><span class="portrait-ring"></span><span class="portrait-play"><svg><use href="#i-play"/></svg></span></button><div><span id="mood">WATCHFUL</span><canvas id="voice-meter" width="104" height="26" aria-hidden="true"></canvas><span id="actor-status">HEAR HIS VOICE</span></div></div></div>
+<div class="scene-border" aria-hidden="true"></div>
+</div>
+<div class="world-state" aria-label="Game state" aria-live="polite">
+<div class="state-item"><div class="state-icon"><svg><use href="#i-gate"/></svg></div><div><span class="small-label">THE GATE</span><strong id="gate">Closed</strong></div><span id="gate-dot" class="state-dot"></span></div>
+<div class="state-item"><div class="state-icon"><svg><use href="#i-key"/></svg></div><div><span class="small-label">GUARD’S KEY</span><strong id="key">With Toren</strong></div></div>
+<div class="state-item"><div class="state-icon"><svg><use href="#i-shield"/></svg></div><div><span class="small-label">YOUR STANDING</span><strong id="trust">Neutral</strong></div></div>
+</div>
+<div class="actions-heading"><span class="small-label">ACTIONS HAVE CONSEQUENCES</span><span>Choose your next move</span></div>
+<div class="actions" id="actions">
+<button class="action action-steal" data-action="steal_key"><svg><use href="#i-key"/></svg><span><strong>Steal the key</strong><small>Take your chances</small></span><span class="action-arrow">↗</span></button>
+<button class="action" data-action="return_key" disabled><svg><use href="#i-return"/></svg><span><strong>Return the key</strong><small>Make things right</small></span><span class="action-arrow">↗</span></button>
+<button class="action action-help" data-action="help_guard"><svg><use href="#i-help"/></svg><span><strong>Help the guard</strong><small>Recover his supplies</small></span><span class="action-arrow">↗</span></button>
+</div>
+<div class="quest-note"><svg><use href="#i-book"/></svg><p id="quest">The road ends here. Earn Toren’s trust to continue your journey.</p></div>
+</section>
+<section class="conversation" aria-label="Conversation with Toren">
+<header class="chat-header"><div class="avatar"><img src="/game/toren.webp" alt=""><span></span></div><div class="chat-identity"><h2>Toren <span>THE FORTRESS GUARD</span></h2><p id="presence"><span class="live-dot"></span> Listening to you</p></div><button id="config" class="icon-button" aria-label="Voice connection details" title="Voice connection details"><svg><use href="#i-info"/></svg></button></header>
+<div class="chat-tools"><div class="mode-pill" id="mode-pill"><span></span><span id="mode-name">Connecting</span></div><label class="language"><svg><use href="#i-mark"/></svg><select id="language" aria-label="Conversation language"><option value="en-IN">English</option><option value="hi-IN">हिन्दी</option></select></label></div>
+<div id="chat" class="chat-log" role="log" aria-live="polite" aria-relevant="additions"><div class="chapter-divider"><span></span> YOUR ENCOUNTER BEGINS <span></span></div><div class="chat-entry npc"><div class="entry-label">TOREN <span>·</span> THE GATEKEEPER</div><p>Halt, traveler.<br>State your business at the gate.</p><div class="entry-detail"><span class="little-wave">▂ ▅ ▃ ▆ ▂</span> Choose a voice in Voice Studio</div></div></div>
+<div class="chat-bottom"><div class="suggestions" id="suggestions"><span>BREAK THE ICE</span><button data-prompt="May I pass through the gate?">May I pass through? <span>↗</span></button><button data-prompt="Who are you, Toren?">Who are you? <span>↗</span></button></div>
+<div id="status" class="status" role="status" hidden></div>
+<form id="talk-form" class="composer"><label class="sr-only" for="message">Your message to Toren</label><textarea id="message" placeholder="What will you say to Toren?" maxlength="280" rows="2"></textarea><div class="composer-footer"><span><span class="composer-dot"></span><span id="input-hint">Your words. His response.</span></span><button type="submit" id="send" aria-label="Send message" disabled><svg><use href="#i-arrow"/></svg></button></div></form>
+<div class="chat-footer"><div class="voice-status"><svg><use href="#i-volume"/></svg><span id="voice-label">Voice on</span></div><span id="timing">ENTER TO SEND</span><button id="stop-voice" class="replay stop-voice" disabled><svg><use href="#i-close"/></svg> Stop</button><button id="replay" class="replay" disabled title="Replay the latest voice line"><svg><use href="#i-play"/></svg> Replay</button></div></div>
+</section>
+</div>
+<section id="voice-studio" class="voice-studio" aria-labelledby="studio-title">
+<div class="studio-heading"><div><div class="eyebrow">THE VOICE IS THE CHARACTER</div><h2 id="studio-title">Voice Studio<span>.</span></h2><p>One line. Three interpretations. Find Toren’s voice.</p></div><div class="studio-mode"><span id="studio-mode-label">Preview mode</span><button id="studio-connect">Connection details <svg><use href="#i-info"/></svg></button></div></div>
+<div id="studio-disclosure" class="studio-disclosure">Device preview is active. Bulbul personas and their differences require a server-side Sarvam key.</div>
+<div class="studio-grid"><div class="audition-workspace"><fieldset class="voice-profiles"><legend class="small-label">CAST THE GUARD</legend><div id="profile-cards" class="profile-cards"></div></fieldset>
+<div class="audition-heading"><label for="sample-scenario">AUDITION THE SAME LINE</label><div><select id="sample-scenario" aria-label="Audition scenario"><option value="greeting">At the gate</option><option value="suspicious">The missing key</option><option value="grateful">Trust earned</option></select><select id="studio-language" aria-label="Audition language"><option value="en-IN">English</option><option value="hi-IN">हिन्दी</option></select></div></div>
+<label class="sr-only" for="audition-text">Shared audition text</label><textarea id="audition-text" maxlength="280" rows="3" placeholder="Load a sample or write a short line to compare…"></textarea><div class="audition-foot"><span id="audition-count">0 / 280</span><span>Every profile reads this exact text.</span></div>
+<p class="voice-pair-note" id="voice-pair-note">Each profile pairs separate English and Hindi personas. Audition both languages before choosing.</p>
+</div><aside class="delivery-controls" aria-labelledby="delivery-title"><div class="small-label">CHARACTER DIRECTION</div><h3 id="delivery-title">Make the voice his own.</h3><p>Keep a profile across the encounter. Shape the delivery with supported Bulbul controls.</p>
+<label class="range-label" for="pace-range">Speaking pace <output id="pace-value">1.00×</output></label><input id="pace-range" type="range" min="0.5" max="2" step="0.05" value="1"><div class="range-ends"><span>Deliberate</span><span>Brisk</span></div>
+<label class="range-label" for="variation-range">Variation <output id="variation-value">0.60</output></label><input id="variation-range" type="range" min="0.01" max="1" step="0.01" value="0.6"><div class="range-ends"><span>More consistent</span><span>More varied</span></div>
+<label class="adaptive-check"><input type="checkbox" id="adaptive-voice" checked><span>Adapt pace to Toren’s standing<small>In game only. Auditions use the exact pace above.</small></span></label>
+<button class="primary-button" id="apply-voice" disabled>Use this voice <svg><use href="#i-check"/></svg></button><p id="voice-save-status" class="voice-save-status" role="status">The Sentinel is assigned to Toren.</p>
+<label class="captions-check"><input type="checkbox" id="captions-enabled" checked> Show playback captions</label><p class="caption-note">Mouth and waveform follow audio energy when available. Word timing is estimated, not phoneme alignment.</p></aside></div>
+<div class="now-playing" id="now-playing"><span class="now-icon"><svg><use href="#i-volume"/></svg></span><div><span class="small-label">VOICE MONITOR</span><strong id="now-title">The gate is quiet.</strong><span id="now-details">Play an audition or take an action to hear Toren.</span></div><span id="playback-badge" class="playback-badge">STANDBY</span></div>
+<details class="evaluation-panel"><summary><span>Voice measurements <small id="measurement-count">No live samples yet</small></span><svg><use href="#i-arrow"/></svg></summary><div class="evaluation-content"><p class="measurement-explainer">Playback start measures your action or message to the browser’s playing event. First byte measures the audio request. Device previews and cached replays are excluded from live latency summaries.</p>
+<div class="metric-grid"><div><span>Live playback samples</span><strong id="metric-samples">0</strong></div><div><span>Median playback start</span><strong id="metric-p50">—</strong></div><div><span>95th percentile</span><strong id="metric-p95">—</strong></div><div><span>Measured spend / attempt</span><strong id="metric-cost">Not measured</strong></div></div>
+<div class="measurement-table-wrap"><table class="measurement-table"><thead><tr><th>Voice / language</th><th>Source</th><th>First byte</th><th>Playback start</th><th>Result</th></tr></thead><tbody id="measurement-rows"><tr><td colspan="5">Your voice lines will appear here.</td></tr></tbody></table></div>
+<div class="rating-grid"><div><label for="rating-line">HUMAN LISTENING NOTES</label><select id="rating-line"><option value="">Choose a voice line</option></select><div class="rating-fields"><label>Naturalness<select id="rating-naturalness"><option value="">Unrated</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label><label>Pronunciation<select id="rating-pronunciation"><option value="">Unrated</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label><label>Voice consistency<select id="rating-consistency"><option value="">Unrated</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label></div><textarea id="rating-notes" rows="2" maxlength="500" aria-label="Listening notes" placeholder="What sounded natural? Any mispronounced names or changes in character?"></textarea></div><div class="cost-entry"><label for="measured-spend">MEASURED ACCOUNT SPEND (₹)</label><input id="measured-spend" type="number" min="0" step="0.01" placeholder="Not measured"><p>Optional. Enter the account spend for these live attempts from your Sarvam dashboard. This is a manual measurement, not an API price estimate.</p><a href="https://dashboard.sarvam.ai/" target="_blank" rel="noopener noreferrer">Open Sarvam dashboard ↗</a></div></div>
+<div class="evaluation-actions"><span id="evaluation-note">Measurements and notes stay in this tab’s session.</span><div><button id="export-csv">Export CSV</button><button id="export-json">Export JSON</button><button id="clear-measurements">Clear log</button></div></div></div></details>
+</section>
+<footer class="page-footer"><span><span class="footer-diamond">◇</span> Every word has a consequence.</span><button id="mode-info">Preview dialogue · Device speech <svg><use href="#i-arrow"/></svg></button><span class="footer-credit">CREATED WITH <strong>VoiceStage</strong></span></footer>
+</main>
+<dialog id="help-dialog"><div class="dialog-heading"><span class="eyebrow">YOUR FIRST ENCOUNTER</span><button data-close class="icon-button" aria-label="Close help"><svg><use href="#i-close"/></svg></button></div><h2>A way through the gate.</h2><p>Toren guards the only passage into Ashenfort. What you do matters as much as what you say.</p><ol class="help-steps"><li><span>01</span><div><strong>Start a conversation</strong><p>Ask to enter, introduce yourself, or ask about the fortress. Toren remembers recent turns.</p></div></li><li><span>02</span><div><strong>Make a choice</strong><p>Help recover his supplies to earn passage. Steal his key and the gate closes—even if you helped.</p></div></li><li><span>03</span><div><strong>Hear the difference</strong><p>Open Voice Studio to audition three profiles in English and Hindi. Action buttons trigger spoken reactions. Stop a line or replay audio already received.</p></div></li></ol><p class="dialog-note">Conversation cannot change the game state. Use the action buttons to help Toren or take and return the key.</p><button class="primary-button" data-close>Meet Toren <svg><use href="#i-arrow"/></svg></button></dialog>
+<dialog id="config-dialog"><div class="dialog-heading"><span class="eyebrow">BEHIND THE VOICE</span><button data-close class="icon-button" aria-label="Close connection details"><svg><use href="#i-close"/></svg></button></div><h2 id="config-title">Try the encounter.</h2><p id="config-description">This preview uses scripted, state-aware replies and your device’s speech engine. It is not running an LLM or Bulbul speech yet.</p><div class="connection-row"><span>Dialogue model</span><strong>Sarvam 105B Conversations</strong></div><div class="connection-row"><span>Voice model</span><strong>Bulbul v4 Flash</strong></div><div class="connection-row"><span>Languages</span><strong>English · हिन्दी</strong></div><div id="setup-help"><h3>Connect Sarvam</h3><p>The downloadable FastAPI project includes this scene and the full integration. Set your key in the server’s <code>.env</code> file, then restart:</p><pre>SARVAM_API_KEY=your_key_here
+uvicorn app:app --reload</pre><p>For this hosted version, set <code>SARVAM_API_KEY</code> as a secret in the Site’s runtime environment and redeploy. The key is never entered into the game or sent to the browser.</p><a href="https://dashboard.sarvam.ai/" target="_blank" rel="noopener noreferrer">Get a Sarvam API key <span>↗</span></a></div><button class="primary-button" data-close>Back to the gate <svg><use href="#i-arrow"/></svg></button></dialog>
+<dialog id="restart-dialog"><div class="dialog-heading"><span class="eyebrow">BEGIN AGAIN</span><button data-close class="icon-button" aria-label="Cancel restart"><svg><use href="#i-close"/></svg></button></div><h2>A fresh encounter?</h2><p>This clears Toren’s memory, returns the key, and closes the gate. Your selected voice stays assigned.</p><div class="dialog-buttons"><button class="secondary-button" data-close>Keep playing</button><button id="confirm-restart" class="primary-button">Restart encounter <svg><use href="#i-reset"/></svg></button></div></dialog>
+<audio id="voice" preload="none"></audio>
+<noscript><p class="noscript">Enable JavaScript to talk to Toren and play this encounter.</p></noscript>
+</body>
+</html>
