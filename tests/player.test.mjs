@@ -1,8 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {VoicePlayer} from '../public/game/voice-player.mjs';
+import {VoicePlayer as PythonVoicePlayer} from '../voicestage/game/voice-player.mjs';
 class Audio extends EventTarget{paused=true;duration=2;currentTime=0;src='';async play(){this.paused=false;this.dispatchEvent(new Event('playing'));}pause(){this.paused=true;}removeAttribute(){this.src='';}load(){}}
 const clip={id:'one',mode:'live',url:'/api/speech?id=one',text:'Halt traveler',language_code:'en-IN',pace:1};
+for(const [name,Player] of [['hosted',VoicePlayer],['Python',PythonVoicePlayer]]){
+ test(`${name} default fetch preserves the browser global receiver`,async()=>{
+  const original=globalThis.fetch;let calls=0;const errors=[];let player;
+  globalThis.fetch=async function(){
+   if(this!==globalThis)throw new TypeError('Illegal invocation');
+   calls++;return new Response(new Uint8Array([73,68,51]),{headers:{'Content-Type':'audio/mpeg'}});
+  };
+  try{
+   player=new Player(new Audio(),{onError:e=>errors.push(e)});const row={mode:'live'};
+   await player.play(clip,row);assert.deepEqual(errors,[]);assert.equal(calls,1);assert.ok(player.hasAudio(clip.id));assert.equal(row.status,'playing');
+  }finally{player?.dispose();globalThis.fetch=original;}
+ });
+}
 test('buffered fallback caches one response and replay performs no new synthesis',async()=>{
  let calls=0;const a=new Audio();const p=new VoicePlayer(a,{fetcher:async()=>{calls++;return new Response(new Uint8Array([73,68,51]),{headers:{'Content-Type':'audio/mpeg'}});}});
  const r={mode:'live',status:'generated'};await p.play(clip,r);assert.equal(calls,1);assert.equal(r.playback,'buffered');assert.ok(p.hasAudio('one'));

@@ -8,7 +8,7 @@ function eventOnce(target,name,signal,timeout=10000){return new Promise((resolve
 });}
 /** One active line, incremental MP3 when supported, and a bounded replay cache. */
 export class VoicePlayer{
- constructor(audio,{fetcher=fetch,onUpdate=()=>{},onError=()=>{},onCaption=()=>{},onLevel=()=>{}}={}){
+ constructor(audio,{fetcher=globalThis.fetch.bind(globalThis),onUpdate=()=>{},onError=()=>{},onCaption=()=>{},onLevel=()=>{}}={}){
   this.audio=audio;this.fetcher=fetcher;this.onUpdate=onUpdate;this.onError=onError;this.onCaption=onCaption;this.onLevel=onLevel;this.cache=new Map();this.active=null;this.context=null;this.analyser=null;this.frame=null;this.serial=0;
  }
  get playing(){return !!this.active?.speaking;}
